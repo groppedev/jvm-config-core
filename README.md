@@ -1,2 +1,3 @@
 # jvm-config-core
-JMV configuration manager - core module
+
+JMV configuration manager
