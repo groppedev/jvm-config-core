@@ -1,0 +1,6 @@
+- name: Xmx
+  description: >- 
+     This parameter is used to set an heap size upper bound.
+- name: Xms
+  description: >- 
+     This parameter is used to set an heap lower bound.

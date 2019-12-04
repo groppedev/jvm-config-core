@@ -1,0 +1,15 @@
+# JVM switches
+- name: Xmx
+  category: MEMORY
+  prefix: '-'
+  since: JDK6
+  until: LATEST
+  toggleable: false
+  operator: EQUAL
+- name: Xms
+  category: MEMORY
+  prefix: '-'
+  toggleable: false
+  since: JDK6
+  until: LATEST
+  operator: EQUAL

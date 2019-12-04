@@ -1,0 +1,6 @@
+- name: Xmx
+  description: >- 
+     Imposta il valore massimo di memoria che puo' essere assegnato all'HEAP
+- name: Xms
+  description: >- 
+     Imposta il valore iniziale di mememoria assegnato all'HEAP
