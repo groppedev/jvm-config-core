@@ -12,8 +12,6 @@ public class Host
 	private List<String> exclude;
 	private String mode;
 	private String jvm;
-	private boolean jmx;
-	private boolean proxy;
 	
 	
 //	   - host         : TEST1
@@ -24,6 +22,11 @@ public class Host
 //	        - name : a
 //	        - name : b
 //	        - name : c
+	public Host()
+	{
+		this.size = "M";
+		this.mode = "AUTO";
+	}
 	
 	public String getHost() {
 		return host;
@@ -73,41 +76,47 @@ public class Host
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-	public boolean isJmx() {
-		return jmx;
-	}
-	public void setJmx(boolean jmx) {
-		this.jmx = jmx;
-	}
-	public boolean isProxy() {
-		return proxy;
-	}
-	public void setProxy(boolean proxy) {
-		this.proxy = proxy;
-	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("\n\tHost [host=");
-		builder.append(host);
-		builder.append(", quantity=");
+		builder.append("\n\tHost [");
+		if (host != null) {
+			builder.append("host=");
+			builder.append(host);
+			builder.append(", ");
+		}
+		if (mode != null) {
+			builder.append("mode=");
+			builder.append(mode);
+			builder.append(", ");
+		}
+		builder.append("quantity=");
 		builder.append(quantity);
-		builder.append(", size=");
-		builder.append(size);
-		builder.append(", jvm=");
-		builder.append(jvm);
-		builder.append(", jmx=");
-		builder.append(jmx);
-		builder.append(", proxy=");
-		builder.append(proxy);
-		builder.append(", sequence=");
-		builder.append(sequence);
-		builder.append(", containers=");
-		builder.append(containers);
-		builder.append(", exclude=");
-		builder.append(exclude);
-		builder.append(", mode=");
-		builder.append(mode);
+		builder.append(", ");
+		if (size != null) {
+			builder.append("size=");
+			builder.append(size);
+			builder.append(", ");
+		}
+		if (sequence != null) {
+			builder.append("sequence=");
+			builder.append(sequence);
+			builder.append(", ");
+		}
+		if (containers != null) {
+			builder.append("containers=");
+			builder.append(containers);
+			builder.append(", ");
+		}
+		if (exclude != null) {
+			builder.append("exclude=");
+			builder.append(exclude);
+			builder.append(", ");
+		}
+		if (jvm != null) {
+			builder.append("jvm=");
+			builder.append(jvm);
+		}
 		builder.append("]");
 		return builder.toString();
 	}

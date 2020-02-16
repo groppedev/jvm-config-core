@@ -10,8 +10,9 @@ public class Bundle
 	private String date;
 	private String label;
 	private String version;
+	private boolean jmx;
+	private String author;
 	private List<Host> hosts;
-	
 	
 	public String getArch() {
 		return arch;
@@ -30,6 +31,12 @@ public class Bundle
 	}
 	public void setGroup(String group) {
 		this.group = group;
+	}
+	public boolean isJmx() {
+		return jmx;
+	}
+	public void setJmx(boolean jmx) {
+		this.jmx = jmx;
 	}
 	public String getDate() {
 		return date;
@@ -55,6 +62,12 @@ public class Bundle
 	public void setHosts(List<Host> hosts) {
 		this.hosts = hosts;
 	}
+	public String getAuthor() {
+		return author;
+	}
+	public void setAuthor(String author) {
+		this.author = author;
+	}
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -66,8 +79,12 @@ public class Bundle
 		builder.append(version);
 		builder.append(", group=");
 		builder.append(group);
+		builder.append(", jmx=");
+		builder.append(jmx);
 		builder.append(", date=");
 		builder.append(date);
+		builder.append(", author=");
+		builder.append(author);
 		builder.append(", label=");
 		builder.append(label);
 		builder.append(", hosts=");

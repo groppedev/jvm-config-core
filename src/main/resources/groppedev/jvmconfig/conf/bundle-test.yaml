@@ -2,39 +2,38 @@
 # https://www.baeldung.com/jackson-yaml
 # http://www.yamllint.com/
 
-# Use defaults value whenever it is possible in order to reduce file size (proxy, size, mode, ecc...)
+# Use defaults value whenever it is possible in order to reduce file size (jmx, size, mode, ecc...)
+# These properties (arch, conf, jmx, group, date, version, label) shared between the hosts in the boundle rapresent the bundle keys! 
+# If you need to change anyone of them plese create a new bundle.
 arch    : X86_64
 conf    : CATALINA_SH
+jmx     : true # Exclude JMX from the external configuration and provide it by generating the right parameter together with the metadata.
 group   : GROUP1
 date    : 20200216
 version : 01.00.00
 label   : FIRST_BUNDLE 
+author  : Massimo Groppelli
 hosts:
+# Despite, the switches should be generated from a declarative source (e.g. "gc : g1" -> "-XX:UseG1GC ..."), 
+# for the sake of semplicity right now it's better use manually provided switches by reading an external plain file. 
+# (e.g. "-XX:UseG1GC -XX:G1HeapRegionSize=4m  -XX:MaxGCPauseMillis=200").
     - host          : TEST1
-      jvm           : JDK8
-      size          : M
-      jmx           : true # Exclude JMX from the configuration file.
-      proxy         : false # Exclude JMX from the configuration file.
-      # Try to exclude also GC options, GC logs, Heap Dump, DisableGC.
-      # In the specific file will remain, HEAP, METASPACE, CODE CACHE and GC THREADS!
-      mode          : AUTO
-      sequence      : alphabetic
+      jvm           : JDK8        # Accepted values "JDK7", "JDK8", "JDK11"
+      size          : M           # Default "M" | other accepted values "S","L"
+      mode          : AUTO        # Default "AUTO" | other accepted values "MANUAL"
+      sequence      : alphabetic  # Accepted values "alphabetic", "numerical"
       quantity      : 14
       exclude       : 
         - tomcat_n
     - host          : TEST1
       jvm           : JDK7
       size          : M
-      jmx           : false
-      proxy         : false
       mode          : MANUAL
       containers: 
         - tomcat_n
     - host          : TEST2
       jvm           : JDK8
       size          : M
-      jmx           : true
-      proxy         : true
       mode          : AUTO
       sequence      : numerical
       quantity      : 60
