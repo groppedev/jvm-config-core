@@ -1,0 +1,40 @@
+# https://yaml.org/start.html
+# https://www.baeldung.com/jackson-yaml
+# http://www.yamllint.com/
+
+# Use defaults value whenever it is possible in order to reduce file size (proxy, size, mode, ecc...)
+arch    : X86_64
+conf    : CATALINA_SH
+group   : GROUP1
+date    : 20200216
+version : 01.00.00
+label   : FIRST_BUNDLE 
+hosts:
+    - host          : TEST1
+      jvm           : JDK8
+      size          : M
+      jmx           : true # Exclude JMX from the configuration file.
+      proxy         : false # Exclude JMX from the configuration file.
+      # Try to exclude also GC options, GC logs, Heap Dump, DisableGC.
+      # In the specific file will remain, HEAP, METASPACE, CODE CACHE and GC THREADS!
+      mode          : AUTO
+      sequence      : alphabetic
+      quantity      : 14
+      exclude       : 
+        - tomcat_n
+    - host          : TEST1
+      jvm           : JDK7
+      size          : M
+      jmx           : false
+      proxy         : false
+      mode          : MANUAL
+      containers: 
+        - tomcat_n
+    - host          : TEST2
+      jvm           : JDK8
+      size          : M
+      jmx           : true
+      proxy         : true
+      mode          : AUTO
+      sequence      : numerical
+      quantity      : 60
